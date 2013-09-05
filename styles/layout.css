@@ -1,0 +1,59 @@
+@media screen {
+	
+	/* General */
+	
+	* {
+		margin: 0px;
+		padding: 0px;
+		border: 0px;
+	}
+	
+	body {
+		min-width: 480px;
+		min-height: 320px;
+	}
+	
+	/* Body */
+
+	#bar {
+		display: block;
+		width: 100%;
+		height: 100px;
+		background-color: red;
+	}
+	
+	#table {
+		display: table;
+		width: 100%;
+		height: 220px;
+	}
+	
+	#row1,#row2 {
+		display: table-row;
+	}
+	
+	#top-left.button {
+		background-color: blue;
+	}
+	
+	#top-right.button {
+		background-color: green;
+	}
+	
+	#bottom-left.button {
+		background-color: yellow;
+	}
+	
+	#bottom-right.button {
+		background-color: violet;
+	}
+	
+	.button {
+		display: table-cell;
+	}
+	
+	.clearer {
+		clear: both;
+	}
+
+}

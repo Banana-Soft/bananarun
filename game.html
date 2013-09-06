@@ -15,19 +15,25 @@
 </head>
 
 <body>
-	<div id="bar">Ciao</div>
-	
-		<div id="left" class="button">
+	<div id="bar">
+		<div id="volume">
+			<a href="" onclick="javascript:play()"><img src="img/interface/play.png" alt="Play" /></a>
+			<a href="" onclick="javascript:pause()"><img src="img/interface/pause.png" alt="Pause" /></a>
+			<a href="" onclick="javascript:volumeOff()"><img src="img/interface/volume-off.png" alt="Vol Off" /></a>
+			<a href="" onclick="javascript:volumeOn()"><img src="img/interface/volume-on.png" alt="Vol On" /></a>
 		</div>
-		<div id="middle1" class="button">
-		</div>
-		<div id="middle2" class="button">
-		</div>
-		<div id="right" class="button">
-			 <input type="button" value="Stop" onclick="javascript:stop()"/>
-			 <input type="button" value="Vol On" onclick="javascript:volumeOn()"/>
-			 <input type="button" value="Vol Off" onclick="javascript:volumeOff()"/>
-		</div>
+	</div>
+	<div id="left" class="button">
+	</div>
+	<div id="middle1" class="button">
+	</div>
+	<div id="middle2" class="button">
+	</div>
+	<div id="right" class="button">
+		<input type="button" value="Stop" onclick="javascript:stop()"/>
+		<input type="button" value="Vol On" onclick="javascript:volumeOn()"/>
+		<input type="button" value="Vol Off" onclick="javascript:volumeOff()"/>
+	</div>
 </body>
 
 </html>

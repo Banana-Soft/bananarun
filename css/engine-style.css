@@ -1,0 +1,68 @@
+			#container div {
+				border: solid 1px #000000;
+				width: 1em;
+				height: 1em;
+				border-radius: 1em;
+				position: absolute;	
+			}
+
+			#container .red {
+				background-color: #FF0000;
+			}
+
+			#container .green {
+				background-color: #00FF00;
+			}
+
+			#container .blue {
+				background-color: #0000FF;
+			}
+
+			#container .yellow {
+				background-color: #FFFF00;
+			}			
+
+			#startpoints > div {
+				width: 1em;
+				height: 1em;
+				position: absolute;
+				border-radius: 1em;
+				border-radius: 1em;
+				opacity: 0.2;
+
+			}
+
+			#startpoints > #target_red {
+				border: solid 2px #FF0000;
+			}
+			#startpoints > #target_yellow {
+				border: solid 2px #FFFF00;
+			}
+			#startpoints > #target_green {
+				border: solid 2px #00FF00;
+			}
+			#startpoints > #target_blue {
+				border: solid 2px #0000FF;
+			}
+
+			#endpoints > div {
+				width: 1.5em;
+				height: 1.5em;
+				position: absolute;
+				border-radius: 1.5em;
+				opacity: 0.5;
+			}
+
+
+			#endpoints .red {
+				border: solid 4px #FF0000;
+			}
+			#endpoints .yellow {
+				border: solid 4px #FFFF00;
+			}
+			#endpoints .green {
+				border: solid 4px #00FF00;
+			}
+			#endpoints .blue {
+				border: solid 4px #0000FF;
+			}

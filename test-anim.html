@@ -1,244 +1,38 @@
 <html>
 	<head>
+		<!-- Library for timing optimization -->
 		<script src="jstween-1.1/jstween-1.1.js" ></script>
-		<script type="text/javascript" src="notes.js"></script>
-		<script src="jquery.min.js"></script>
-		<script type="text/javascript" src="buzz.js"></script>
-		<script type="text/javascript" src="buzz_app.js"></script>
-		<script type="text/javascript">
-			var counter = 0;
-			var index   = 0;
-			var inc     = 1;
-			var beat_queue = [];
-			var config = {
-				'red' :  {
-					'startLeft' : '20%',
-					'endLeft' : '20%',
-					'startTop' : '0%',
-					'endTop' : '60%'
-				},
-				'yellow' :  {
-					'startLeft' : '48%',
-					'endLeft' : '40%',
-					'startTop' : '0%',
-					'endTop' : '60%'	
-				},
-				'green' :  {
-					'startLeft' : '52%',
-					'endLeft' : '60%',
-					'startTop' : '0%',
-					'endTop' : '60%'	
-				},
-				'blue' :  {
-					'startLeft' : '56%',
-					'endLeft' : '80%',
-					'startTop' : '0%',
-					'endTop' : '60%'	
-				}
-			}
-
-			$(document).ready (function () {
-				var index = 0;
-				var total_time = -1;
-				var current_time = 0;
-				var status = "ready"; 
-
-				for ( key in config ) {
-					console.log (key, config[key]);
-					$('#startpoints_target_' + key).css('top', config[key].startTop); 
-					$('#startpoints_target_' + key).css('left', config[key].startLeft); 
-					$('#endpoints_target_' + key).css('top', config[key].endTop); 
-					$('#endpoints_target_' + key).css('left', config[key].endLeft); 
-				} 
-
-				window.setInterval (function () {
-					if (status == 'wait') {
-						//console.log("status waiting");
-						current_time += quantum_size;	
-					}
-
-					if(status == "ready"){
-
-						//console.log("status ready");
-						var note = notes[index];
-						beat_queue.push(note);
-
-						total_time = note.duration;
-						current_time = 0;
-						if(note.hasOwnProperty("color")){
-							switch (note.color) {
-								case "red": createRedBeat ();
-										break;
-								case "blue": createBlueBeat ();
-										break;
-								case "yellow": createYellowBeat ();
-										break;
-								case "green": createGreenBeat ();
-										break;
-							}
-						}
-						status = "wait";
-						current_time += quantum_size;
-
-						//start waiting a event
-
-						//the beat reaches the target
-						if(current_time == 2)
-							beat_queue.shift();
-						/*press a button
-
-							TODO: get the color of the button pressed
-								  and control if the color of the queue
-								  match the color of the button pressed
-								  	TRUE: start assign score as follow
-								if (startTime-clicktime <=max_point_delta)
-										 assign max score
-									else if(mid_point_delta<=startTime-clicktime <max_point_delta)
-											assign mid score
-											else
-												assign minimum score
-									FALSE: beat missed
-							beat_queue.shift()		
-						*/ 
-
-					}
-
-					if(total_time == current_time){
-						//console.log("next note");
-						status = "ready";
-						index++;
-					}
-
-
-
-				}, 125);
-			});
-
-			function createRedBeat () {
-				createBeat (counter ++, 'red');
-			}
-
-			function createYellowBeat () {
-				createBeat (counter ++, 'yellow');
-			}
-
-			function createGreenBeat () {
-				createBeat (counter ++, 'green');
-			}
-
-			function createBlueBeat () {
-				createBeat (counter ++, 'blue');
-			}
-
-			function createBeat (index, color) {
-
-
-				var beat = document.createElement ('div');
-				beat.id = 'ball_' + index;
-
-				$('#container').append (beat);
-				$(beat).css ('left', config[color].startLeft);
-				$(beat).css ('top', config[color].startTop);
-				$(beat).addClass (color);
-				$(beat).animate ({'top': config[color].endTop, 'left':config[color].endLeft, 'height': '1.5em', 'width': '1.5em', 'border-radius': '1.5em'}, 4000, 'linear', 
-					function () {
-						$(beat).remove ();
-						//$('#target_' + color).css('opacity', 1);
-						$('#target_' + color).fadeTo (0, 1).fadeTo(1000, 0.2);
-				});
-			}
-
-
-
-
-		</script>
-		<style type="text/css">
-			#container div {
-				border: solid 1px #000000;
-				width: 1em;
-				height: 1em;
-				border-radius: 1em;
-				position: absolute;	
-			}
-
-			#container .red {
-				background-color: #FF0000;
-			}
-
-			#container .green {
-				background-color: #00FF00;
-			}
-
-			#container .blue {
-				background-color: #0000FF;
-			}
-
-			#container .yellow {
-				background-color: #FFFF00;
-			}			
-
-			#startpoints > div {
-				width: 1em;
-				height: 1em;
-				position: absolute;
-				border-radius: 1em;
-				border-radius: 1em;
-				opacity: 0.2;
-
-			}
-
-			#startpoints > #target_red {
-				border: solid 2px #FF0000;
-			}
-			#startpoints > #target_yellow {
-				border: solid 2px #FFFF00;
-			}
-			#startpoints > #target_green {
-				border: solid 2px #00FF00;
-			}
-			#startpoints > #target_blue {
-				border: solid 2px #0000FF;
-			}
-
-			#endpoints > div {
-				width: 1.5em;
-				height: 1.5em;
-				position: absolute;
-				border-radius: 1.5em;
-				opacity: 0.5;
-			}
-
-
-			#endpoints .red {
-				border: solid 4px #FF0000;
-			}
-			#endpoints .yellow {
-				border: solid 4px #FFFF00;
-			}
-			#endpoints .green {
-				border: solid 4px #00FF00;
-			}
-			#endpoints .blue {
-				border: solid 4px #0000FF;
-			}
-		</style>
+		<!-- Jquery Library -->
+		<script src="lib/jquery.min.js"></script>
+		<!-- Music Script -->
+		<script type="text/javascript" src="js/buzz.js"></script>
+		<script type="text/javascript" src="js/buzz_app.js"></script>
+		<!-- Note track -->
+		<script type="text/javascript" src="js/notes.js"></script>
+		<!-- Game engine -->
+		<script type="text/javascript" src="js/game-engine.css"></script>
+		<!-- Game Styling -->
+		<link rel="stylesheet" type="text/css" href="css/engine-style.css">
 	</head>
 	<body >
 		<header>
-			<button onclick='javascript:createRedBeat();'>Click me</button>
-			<button onclick='javascript:createYellowBeat();'>Click me</button>
-			<button onclick='javascript:createGreenBeat();'>Click me</button>
-			<button onclick='javascript:createBlueBeat();'>Click me</button>
+			<!-- Test buttons -->
+			<button onclick='javascript:beatMatch("red");'>Click me</button>
+			<button onclick='javascript:beatMatch("yellow");'>Click me</button>
+			<button onclick='javascript:beatMatch("green");'>Click me</button>
+			<button onclick='javascript:beatMatch("blue");'>Click me</button>
 			<input type = "button" value="Stop" onclick="javascript:stop()"/>
 		</header>
-		<div id="container">
-		</div>
+			<!-- Container of the beats -->
+		<div id="container"></div>
+			<!-- Targets of the beats -->
 		<div id="endpoints">
 			<div id="endpoints_target_red" class='red'></div>
 			<div id="endpoints_target_yellow" class='yellow'></div>
 			<div id="endpoints_target_green" class='green'></div>
 			<div id="endpoints_target_blue" class='blue'></div>
 		</div>
+			<!-- Start point of the beats -->
 		<div id="startpoints">
 			<div id="startpoints_target_red" class='red'></div>
 			<div id="startpoints_target_yellow" class='yellow'></div>

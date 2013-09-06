@@ -1,0 +1,13 @@
+{
+  "name": "Banana Run",
+  "description": "A brave banana have to run. Why? Complete the game with a good results and you'll find it!",
+  "launch_path": "/",
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Banana Soft",
+    "url": "http://banana-soft.org"
+  },
+  "default_locale": "en"
+}

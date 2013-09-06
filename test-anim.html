@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<script src="jstween-1.1/jstween-1.1.js" ></script>
 		<script type="text/javascript" src="notes.js"></script>
 		<script src="jquery.min.js"></script>
 		<script type="text/javascript" src="buzz.js"></script>
@@ -16,13 +17,13 @@
 				var status = "ready"; 
 				window.setInterval (function () {
 					if (status == 'wait') {
-						console.log("status waiting");
+						//console.log("status waiting");
 						current_time += quantum_size;	
 					}
 
 					if(status == "ready"){
 
-						console.log("status ready");
+						//console.log("status ready");
 						var note = notes[index];
 						total_time = note.duration;
 						current_time = 0;
@@ -43,7 +44,7 @@
 					}
 
 					if(total_time == current_time){
-						console.log("next note");
+						//console.log("next note");
 						status = "ready";
 						index++;
 					}	

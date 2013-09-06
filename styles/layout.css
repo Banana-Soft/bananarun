@@ -8,9 +8,13 @@
 		border: 0px;
 	}
 	
+	html {
+		width: 100%;
+		height: 100%;
+	}
+	
 	body {
-		min-width: 480px;
-		min-height: 320px;
+		height: 100%;
 	}
 	
 	/* Body */
@@ -18,42 +22,43 @@
 	#bar {
 		display: block;
 		width: 100%;
-		height: 100px;
+		height: 40%;
 		background-color: red;
 	}
 	
-	#table {
-		display: table;
-		width: 100%;
-		height: 220px;
+	.button {
+		display: block;
+		position: absolute;
+		width: 25%;
 	}
 	
-	#row1,#row2 {
-		display: table-row;
+	#left.button, #right.button {
+		top: 60%;
+		height: 40%;
 	}
 	
-	#top-left.button {
+	#middle1.button, #middle2.button {
+		height: 60%;
+	}
+	
+	#left.button {
+		left: 0%;
 		background-color: blue;
 	}
 	
-	#top-right.button {
+	#middle1.button {
+		left: 25%;
 		background-color: green;
 	}
 	
-	#bottom-left.button {
+	#middle2.button {
+		left: 50%;
 		background-color: yellow;
 	}
 	
-	#bottom-right.button {
+	#right.button {
+		left: 75%;
 		background-color: violet;
 	}
 	
-	.button {
-		display: table-cell;
-	}
-	
-	.clearer {
-		clear: both;
-	}
-
 }

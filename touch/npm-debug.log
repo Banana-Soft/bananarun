@@ -1,0 +1,67 @@
+info it worked if it ends with ok
+verbose cli [ '/usr/bin/nodejs',
+verbose cli   '/usr/bin/npm',
+verbose cli   'install',
+verbose cli   '-g',
+verbose cli   'grunt-cli',
+verbose cli   'bower' ]
+info using npm@1.1.4
+info using node@v0.6.19
+verbose config file /home/marco/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose cache add [ 'grunt-cli', null ]
+silly cache add: name, spec, args [ undefined, 'grunt-cli', [ 'grunt-cli', null ] ]
+verbose parsed url { pathname: 'grunt-cli', path: 'grunt-cli', href: 'grunt-cli' }
+verbose cache add [ 'bower', null ]
+silly cache add: name, spec, args [ undefined, 'bower', [ 'bower', null ] ]
+verbose parsed url { pathname: 'bower', path: 'bower', href: 'bower' }
+verbose addNamed [ 'grunt-cli', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'grunt-cli', '', false ]
+verbose addNamed [ 'bower', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'bower', '', false ]
+verbose raw, before any munging grunt-cli
+verbose url resolving [ 'https://registry.npmjs.org/', './grunt-cli' ]
+verbose url resolved https://registry.npmjs.org/grunt-cli
+http GET https://registry.npmjs.org/grunt-cli
+verbose raw, before any munging bower
+verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
+verbose url resolved https://registry.npmjs.org/bower
+http GET https://registry.npmjs.org/bower
+http 200 https://registry.npmjs.org/grunt-cli
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"40B8A22AJPA44CFE4BR8S2OKU"',
+silly get cb     date: 'Fri, 06 Sep 2013 06:15:29 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '22870' } ]
+verbose mkdir (expected) error ENOENT, stat '/home/marco/.npm/grunt-cli'
+verbose mkdir done: /home/marco/.npm/grunt-cli 755
+silly name, range, hasData 2 [ 'grunt-cli', '', true ]
+silly versions [ 'grunt-cli', [] ]
+ERR! Error: No compatible version found: grunt-cli
+ERR! No valid targets found.
+ERR! Perhaps not compatible with your version of node?
+ERR!     at installTargetsError (/usr/share/npm/lib/cache.js:488:10)
+ERR!     at next_ (/usr/share/npm/lib/cache.js:438:17)
+ERR!     at next (/usr/share/npm/lib/cache.js:415:44)
+ERR!     at /usr/share/npm/lib/cache.js:408:5
+ERR!     at saved (/usr/share/npm/lib/utils/npm-registry-client/get.js:147:7)
+ERR!     at Object.oncomplete (/usr/lib/nodejs/graceful-fs.js:230:7)
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /var/www/progetti/bananarun/touch/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.8.0-29-generic
+ERR! command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "grunt-cli" "bower"
+ERR! cwd /var/www/progetti/bananarun/touch
+ERR! node -v v0.6.19
+ERR! npm -v 1.1.4
+ERR! message No compatible version found: grunt-cli
+ERR! message No valid targets found.
+ERR! message Perhaps not compatible with your version of node?
+verbose exit [ 1, true ]

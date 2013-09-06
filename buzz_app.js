@@ -3,7 +3,7 @@ if (!buzz.isSupported()) {
         }
         
         
-        var melody = new buzz.sound ( "http://lumberjacks.altervista.org/melodia", {
+        var melody = new buzz.sound ( "audio/melodia", {
                 formats: [ "ogg" ],
                 autoload: "true",
                 preload: "true",
@@ -12,7 +12,7 @@ if (!buzz.isSupported()) {
         
         
         
-        var bgMusic = new buzz.sound( "http://lumberjacks.altervista.org/sottofondo", {
+        var bgMusic = new buzz.sound( "audio/sottofondo", {
                 formats: [ "ogg" ],
                 autoload: "true",
                 preload: "true",

@@ -2,29 +2,29 @@ var notes = [
     //beats 1-6.5 + 1/8
     {
         duration:23.5
-    },,
+    },
     //beat 6
     {
         color:"red",
         duration:0.5
-    },,
+    },
     {
         color:"yellow",
         duration:0.5
-    },,
+    },
     {
         color:"green",
         duration:0.5
-    },,
+    },
     //beat 7
     {
         color:"blue",
         duration:1
-    },,
+    },
     {
         color:"blue",
         duration:1
-    },,
+    },
     {
         color:"yellow",
         duration:1

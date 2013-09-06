@@ -1,28 +1,182 @@
 .red{
         background-color: #dc3434;
 }
-#fuck{
+.blue{
+        background-color: #3434dc;
+}
+.green{
+        background-color: #34dc34;
+}
+.yellow{
+        background-color: #eded00;
+}
+.target{
+      border: solid #000000 1px;
+      float: left; 
+}
+.beat{
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    margin: 3px 3px 3px 3px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+}
+#container{
+    height: 80%;
+    width: 100%;
+    border: solid 1px #000000;
+    overflow: hidden;
+}
+.animation1{
+        float: right;
+        animation-name: sx-path;
         animation-duration: 5s;
-        animation-name: slidein;
         animation-iteration-count: infinite;
-        animation-direction: alternate;
+        animation-direction: normal;
+	      animation-timing-function: linear;
 }    
-    @-moz-keyframes slidein {
+    @-moz-keyframes sx-path {
       from {
-        right:0%;
+        right:50%;
+        top: 0px;
       }
-
       to {
-        right:95%;
+        height: 160px;
+        width: 160px;
+        right:90%;
+        top: 90%;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
       }
     }
     
-    @-webkit-keyframes slidein {
+    @-webkit-keyframes sx-path {
       from {
-        right:0%;
+        right:50%;
+        top: 0px;
       }
-
       to {
-        right:95%;
+        height: 160px;
+        width: 160px;
+        right:90%;
+        top: 90%;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
       }
     }
+}
+
+.animation2{
+        float: right;
+        animation-name: mid-sx-path;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+}    
+    @-moz-keyframes mid-sx-path {
+      from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:70%;
+        top: 90%;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+    
+    @-webkit-keyframes mid-sx-path {
+      from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:70%;
+        top: 90%;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+}
+.animation3{
+        animation-name: mid-dx-path;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+}    
+    @-moz-keyframes mid-dx-path {
+      from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:40%;
+        top: 100px;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+    
+    @-webkit-keyframes mid-dx-path {
+       from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:40%;
+        top: 100px;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+}
+.animation4{
+        animation-name: dx-path;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-timing-function: linear;
+}    
+    @-moz-keyframes dx-path {
+      from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:10%;
+        top: 100px;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+    
+    @-webkit-keyframes dx-path {
+     from {
+        right:50%;
+        top: 0px;
+      }
+      to {
+        height: 160px;
+        width: 160px;
+        right:10%;
+        top: 100px;
+        -moz-border-radius: 80px;
+        border-radius: 80px;
+      }
+    }
+}
+

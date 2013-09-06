@@ -1,0 +1,15 @@
+<html>
+<head>
+	<script src="beat-script.js"></script>
+	<link rel="stylesheet" type="text/css" href="animation.css">
+</head>
+<body>
+	<style type="text/css">
+		
+	</style>
+<div id="container">
+	<div class="red" id="fuck"></div>
+</div>
+<input type="button" name="beat-add" onclick="createBeat()" value="Create Beat"/>
+</body>
+</html>

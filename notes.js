@@ -1,7 +1,10 @@
+var bpm = 120;
+var quantum_size = 0.25;
+var animation_gap = 8;
 var notes = [
     //beats 1-6.5 + 1/8
     {
-        duration:23.5
+        duration:(23.5 - animation_gap)
     },
     //beat 6
     {

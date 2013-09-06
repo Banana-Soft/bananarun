@@ -1,51 +1,69 @@
 <html>
 	<head>
+		<script type="text/javascript" src="notes.js"></script>
 		<script src="jquery.min.js"></script>
+		<script type="text/javascript" src="buzz.js"></script>
+		<script type="text/javascript" src="buzz_app.js"></script>
 		<script type="text/javascript">
 			var counter = 0;
 			var index   = 0;
 			var inc     = 1;
 
-			$(document).ready (function () { 
+			$(document).ready (function () {
+				var index = 0;
+				var total_time = -1;
+				var current_time = 0;
+				var status = "ready"; 
 				window.setInterval (function () {
-					switch (index) {
-						case 0: createRedBeat ();
-								break;
-						case 1: createBlueBeat ();
-								break;
-						case 2: createYellowBeat ();
-								break;
-						case 3: createGreenBeat ();
-								break;
+					if (status == 'wait') {
+						console.log("status waiting");
+						current_time += quantum_size;	
 					}
-					
 
-					if (index == 3) {
-						inc = -1;
+					if(status == "ready"){
+
+						console.log("status ready");
+						var note = notes[index];
+						total_time = note.duration;
+						current_time = 0;
+						if(note.hasOwnProperty("color")){
+							switch (note.color) {
+								case "red": createRedBeat ();
+										break;
+								case "blue": createBlueBeat ();
+										break;
+								case "yellow": createYellowBeat ();
+										break;
+								case "green": createGreenBeat ();
+										break;
+							}
+						}
+						status = "wait";
+						current_time += quantum_size;
 					}
-					else if (index == 0) {
-						inc = 1;
-					}
-					index += inc;
 
-
-				}, 500);
+					if(total_time == current_time){
+						console.log("next note");
+						status = "ready";
+						index++;
+					}	
+				}, 125);
 			});
 
 			function createRedBeat () {
 				createBeat (counter ++, 'red', '44%', '20%');
 			}
 
-			function createBlueBeat () {
-				createBeat (counter ++, 'blue', '48%', '40%');
-			}
-
 			function createYellowBeat () {
-				createBeat (counter ++, 'yellow', '52%', '60%');
+				createBeat (counter ++, 'yellow', '48%', '40%');
 			}
 
 			function createGreenBeat () {
-				createBeat (counter ++, 'green', '56%', '80%');
+				createBeat (counter ++, 'green', '52%', '60%');
+			}
+
+			function createBlueBeat () {
+				createBeat (counter ++, 'blue', '56%', '80%');
 			}
 
 			function createBeat (index, color, leftStart, leftEnd) {
@@ -55,7 +73,7 @@
 				$('#container').append (beat);
 				$(beat).css ('left', leftStart);
 				$(beat).addClass (color);
-				$(beat).animate ({'top': '89%', 'left':leftEnd, 'height': '1.5em', 'width': '1.5em', 'border-radius': '1.5em'}, 5000, 'linear', 
+				$(beat).animate ({'top': '89%', 'left':leftEnd, 'height': '1.5em', 'width': '1.5em', 'border-radius': '1.5em'}, 4000, 'linear', 
 					function () {
 						$(beat).remove ();
 						//$('#target_' + color).css('opacity', 1);
@@ -98,6 +116,7 @@
 				top: 0%;
 				position: absolute;
 				border-radius: 1em;
+				border-radius: 1em;
 				opacity: 0.5;
 
 			}
@@ -105,6 +124,18 @@
 			#startpoints > #target_red {
 				border: solid 2px #FF0000;
 				left: 44%;
+			}
+			#startpoints > #target_yellow {
+				border: solid 2px #FFFF00;
+				left: 48%;
+			}
+			#startpoints > #target_green {
+				border: solid 2px #00FF00;
+				left: 52%;
+			}
+			#startpoints > #target_blue {
+				border: solid 2px #0000FF;
+				left: 56%;
 			}
 
 			#endpoints > div {
@@ -121,6 +152,18 @@
 				border: solid 4px #FF0000;
 				left: 20%;
 			}
+			#endpoints .yellow {
+				border: solid 4px #FFFF00;
+				left: 40%;
+			}
+			#endpoints .green {
+				border: solid 4px #00FF00;
+				left: 60%;
+			}
+			#endpoints .blue {
+				border: solid 4px #0000FF;
+				left: 80%;
+			}
 		</style>
 	</head>
 	<body >
@@ -129,6 +172,7 @@
 			<button onclick='javascript:createYellowBeat();'>Click me</button>
 			<button onclick='javascript:createGreenBeat();'>Click me</button>
 			<button onclick='javascript:createBlueBeat();'>Click me</button>
+			<input type = "button" value="Stop" onclick="javascript:stop()"/>
 		</header>
 		<div id="container">
 		</div>

@@ -1,6 +1,6 @@
 {
   "name": "Banana Run",
-  "description": "A brave banana have to run. Why? Complete the game with a good results and you'll find it!",
+  "description": "A brave banana has to run. Why? Complete the game with a good results and you'll find it!",
   "launch_path": "/",
   "icons": {
     "60": "/img/banana-icon-60.png",

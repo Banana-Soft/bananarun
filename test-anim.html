@@ -12,7 +12,7 @@
 
 			var config = {
 				'red' :  {
-					'startLeft' : '44%',
+					'startLeft' : '20%',
 					'endLeft' : '20%',
 					'startTop' : '0%',
 					'endTop' : '60%'
@@ -34,7 +34,7 @@
 					'endLeft' : '80%',
 					'startTop' : '0%',
 					'endTop' : '60%'	
-				},
+				}
 			}
 
 			$(document).ready (function () {
@@ -42,6 +42,15 @@
 				var total_time = -1;
 				var current_time = 0;
 				var status = "ready"; 
+
+				for ( key in config ) {
+					console.log (key, config[key]);
+					$('#startpoints_target_' + key).css('top', config[key].startTop); 
+					$('#startpoints_target_' + key).css('left', config[key].startLeft); 
+					$('#endpoints_target_' + key).css('top', config[key].endTop); 
+					$('#endpoints_target_' + key).css('left', config[key].endLeft); 
+				} 
+
 				window.setInterval (function () {
 					if (status == 'wait') {
 						//console.log("status waiting");
@@ -79,33 +88,36 @@
 			});
 
 			function createRedBeat () {
-				createBeat (counter ++, 'red', '44%', '20%');
+				createBeat (counter ++, 'red');
 			}
 
 			function createYellowBeat () {
-				createBeat (counter ++, 'yellow', '48%', '40%');
+				createBeat (counter ++, 'yellow');
 			}
 
 			function createGreenBeat () {
-				createBeat (counter ++, 'green', '52%', '60%');
+				createBeat (counter ++, 'green');
 			}
 
 			function createBlueBeat () {
-				createBeat (counter ++, 'blue', '56%', '80%');
+				createBeat (counter ++, 'blue');
 			}
 
-			function createBeat (index, color, leftStart, leftEnd) {
+			function createBeat (index, color) {
+
+
 				var beat = document.createElement ('div');
 				beat.id = 'ball_' + index;
 
 				$('#container').append (beat);
-				$(beat).css ('left', leftStart);
+				$(beat).css ('left', config[color].startLeft);
+				$(beat).css ('top', config[color].startTop);
 				$(beat).addClass (color);
-				$(beat).animate ({'top': '89%', 'left':leftEnd, 'height': '1.5em', 'width': '1.5em', 'border-radius': '1.5em'}, 4000, 'linear', 
+				$(beat).animate ({'top': config[color].endTop, 'left':config[color].endLeft, 'height': '1.5em', 'width': '1.5em', 'border-radius': '1.5em'}, 4000, 'linear', 
 					function () {
 						$(beat).remove ();
 						//$('#target_' + color).css('opacity', 1);
-						$('#target_' + color).fadeTo (0, 1).fadeTo(1000, 0.5);
+						$('#target_' + color).fadeTo (0, 1).fadeTo(1000, 0.2);
 				});
 			}
 
@@ -141,35 +153,29 @@
 			#startpoints > div {
 				width: 1em;
 				height: 1em;
-				top: 0%;
 				position: absolute;
 				border-radius: 1em;
 				border-radius: 1em;
-				opacity: 0.5;
+				opacity: 0.2;
 
 			}
 
 			#startpoints > #target_red {
 				border: solid 2px #FF0000;
-				left: 44%;
 			}
 			#startpoints > #target_yellow {
 				border: solid 2px #FFFF00;
-				left: 48%;
 			}
 			#startpoints > #target_green {
 				border: solid 2px #00FF00;
-				left: 52%;
 			}
 			#startpoints > #target_blue {
 				border: solid 2px #0000FF;
-				left: 56%;
 			}
 
 			#endpoints > div {
 				width: 1.5em;
 				height: 1.5em;
-				top: 89%;
 				position: absolute;
 				border-radius: 1.5em;
 				opacity: 0.5;
@@ -178,19 +184,15 @@
 
 			#endpoints .red {
 				border: solid 4px #FF0000;
-				left: 20%;
 			}
 			#endpoints .yellow {
 				border: solid 4px #FFFF00;
-				left: 40%;
 			}
 			#endpoints .green {
 				border: solid 4px #00FF00;
-				left: 60%;
 			}
 			#endpoints .blue {
 				border: solid 4px #0000FF;
-				left: 80%;
 			}
 		</style>
 	</head>
@@ -205,16 +207,16 @@
 		<div id="container">
 		</div>
 		<div id="endpoints">
-			<div id="target_red" class='red'></div>
-			<div id="target_yellow" class='yellow'></div>
-			<div id="target_green" class='green'></div>
-			<div id="target_blue" class='blue'></div>
+			<div id="endpoints_target_red" class='red'></div>
+			<div id="endpoints_target_yellow" class='yellow'></div>
+			<div id="endpoints_target_green" class='green'></div>
+			<div id="endpoints_target_blue" class='blue'></div>
 		</div>
 		<div id="startpoints">
-			<div id="target_red" class='red'></div>
-			<div id="target_yellow" class='yellow'></div>
-			<div id="target_green" class='green'></div>
-			<div id="target_blue" class='blue'></div>
+			<div id="startpoints_target_red" class='red'></div>
+			<div id="startpoints_target_yellow" class='yellow'></div>
+			<div id="startpoints_target_green" class='green'></div>
+			<div id="startpoints_target_blue" class='blue'></div>
 		</div>
 	</body>
 </html>

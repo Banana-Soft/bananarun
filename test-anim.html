@@ -9,7 +9,7 @@
 			var counter = 0;
 			var index   = 0;
 			var inc     = 1;
-
+			var beat_queue = [];
 			var config = {
 				'red' :  {
 					'startLeft' : '20%',
@@ -61,6 +61,8 @@
 
 						//console.log("status ready");
 						var note = notes[index];
+						beat_queue.push(note);
+
 						total_time = note.duration;
 						current_time = 0;
 						if(note.hasOwnProperty("color")){
@@ -77,13 +79,38 @@
 						}
 						status = "wait";
 						current_time += quantum_size;
+
+						//start waiting a event
+
+						//the beat reaches the target
+						if(current_time == 2)
+							beat_queue.shift();
+						/*press a button
+
+							TODO: get the color of the button pressed
+								  and control if the color of the queue
+								  match the color of the button pressed
+								  	TRUE: start assign score as follow
+								if (startTime-clicktime <=max_point_delta)
+										 assign max score
+									else if(mid_point_delta<=startTime-clicktime <max_point_delta)
+											assign mid score
+											else
+												assign minimum score
+									FALSE: beat missed
+							beat_queue.shift()		
+						*/ 
+
 					}
 
 					if(total_time == current_time){
 						//console.log("next note");
 						status = "ready";
 						index++;
-					}	
+					}
+
+
+
 				}, 125);
 			});
 
